@@ -5,7 +5,7 @@ all: index.thinlto.ll static_build
 # Essentially, these are .bc files, but it's useful to call them .s in order to
 # avoid collisions with the re-assembled .bc files below.
 %.s: %.c
-	clang -c -flto=thin -O1 $< -o $@
+	clang -c -flto=thin -O1 $(CFLAGS) $< -o $@
 
 %.ll: %.s
 	llvm-dis $< -o $@
